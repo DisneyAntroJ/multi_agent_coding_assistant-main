@@ -1,6 +1,8 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
+from openai import RateLimitError
 import os
+import time
 import json
 
 
@@ -72,7 +74,19 @@ def coder_agent(plan: dict, architecture: dict):
         """
 
 
-        response = llm.invoke(prompt).content
+        try:
+            response = llm.invoke(prompt).content
+
+            except RateLimitError:
+            time.sleep(10)
+
+            try:
+                response = llm.invoke(prompt).content
+
+                except RateLimitError:
+        return {
+            "error": "Groq rate limit reached. Please wait a minute and try again."
+        }
 
 
         # Clean unwanted markdown if present
