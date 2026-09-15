@@ -12,7 +12,7 @@ if not api_key:
 llm = ChatOpenAI(
     base_url="https://api.groq.com/openai/v1",
     api_key=api_key,
-    model="llama-3.3-70b-versatile",
+    model="openai/gpt-oss-120b",
     temperature=0
 )
 #  Planner Agent
