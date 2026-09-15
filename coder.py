@@ -75,7 +75,7 @@ def coder_agent(plan: dict, architecture: dict):
 
 
       try:
-    response = llm.invoke(prompt).content
+          response = llm.invoke(prompt).content
 
 except RateLimitError:
     time.sleep(10)
@@ -83,7 +83,7 @@ except RateLimitError:
     try:
         response = llm.invoke(prompt).content
 
-    except RateLimitError:
+        except RateLimitError:
         return {
             "error": "Groq rate limit reached. Please wait a minute and try again."
         }
@@ -94,7 +94,7 @@ except RateLimitError:
         write_file(project_name, file, cleaned)
 
 
-    return f"🎉 Project '{project_name}' created successfully!"
+        return f"🎉 Project '{project_name}' created successfully!"
 
 
 
