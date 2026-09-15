@@ -2,15 +2,16 @@ from langchain_openai import ChatOpenAI
 import os
 import json
 
+api_key = os.getenv("GROQ_API_KEY")
 
-# 🔑 Set your Groq API key here
-os.environ["GROQ_API_KEY"] = ""
-os.environ["OPENAI_API_KEY"] = os.environ["GROQ_API_KEY"]
+if not api_key:
+    raise ValueError("GROQ_API_KEY not found")
 
 
 #  Initialize LLM (Groq)
 llm = ChatOpenAI(
     base_url="https://api.groq.com/openai/v1",
+    api_key=api_key,
     model="llama-3.3-70b-versatile",
     temperature=0
 )
