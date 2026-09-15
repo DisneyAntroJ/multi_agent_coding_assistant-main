@@ -24,13 +24,14 @@ llm = ChatOpenAI(
 )
 
 
-# 📁 File Writer
 def write_file(project_name, file_name, content):
-    os.makedirs(project_name, exist_ok=True)
-
-
     file_path = os.path.join(project_name, file_name)
 
+    # Create parent directories if they don't exist
+    parent_dir = os.path.dirname(file_path)
+
+    if parent_dir:
+        os.makedirs(parent_dir, exist_ok=True)
 
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(content)
