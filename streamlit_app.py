@@ -3,11 +3,9 @@ import sys
 import os
 
 # Add parent directory to path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from agents.planner import planner_agent
-from agents.architect import architect_agent
-from agents.coder import coder_agent
+from planner import planner_agent
+from architect import architect_agent
+from coder import coder_agent
 
 st.set_page_config(page_title="AI Coding Assistant", layout="centered")
 
